@@ -17,3 +17,13 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+
+- task: CmdLine@2
+  inputs:
+    script: 'whoami'
+
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '3.1.1'
