@@ -10,6 +10,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: CmdLine@2
+  inputs:
+    script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)"'
+
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
@@ -17,7 +21,6 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-
 
 - task: CmdLine@2
   inputs:
@@ -27,3 +30,8 @@ steps:
   inputs:
     packageType: 'sdk'
     version: '3.1.201'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'custom'
+    custom: '--info'
